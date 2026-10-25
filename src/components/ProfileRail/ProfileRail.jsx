@@ -2,7 +2,10 @@ import GpsIcon from "../../assets/icons/GpsIcon";
 import UserStar from "../../assets/icons/UserStar";
 import Icon from "../Icon/Icon";
 import "./ProfileRail.css";
-import Person1 from '../../assets/images/Person1.png'
+import Person1 from "../../assets/images/Person1.png";
+import College1 from "../../assets/images/College1.png";
+import College2 from "../../assets/images/College2.png";
+import EmailIcon from "../../assets/icons/EmailIcon";
 
 export default function ProfileRail({ profile, studentMode, onEdit }) {
     return (
@@ -22,7 +25,7 @@ export default function ProfileRail({ profile, studentMode, onEdit }) {
                             {profile.name}
                         </h1>
                         <div className="mt-0.5 sm:mt-3 text-sm leading-5 text-[#777580] flex items-center gap-1.5">
-                            <UserStar/>
+                            <UserStar />
                             {profile.headline}
                         </div>
                     </div>
@@ -35,32 +38,58 @@ export default function ProfileRail({ profile, studentMode, onEdit }) {
                     <span className="mr-2 text-[#eb5ac5]">⌖</span>Open to work ·
                     Content roles
                 </div> */}
-                <div className="mt-4 grid grid-cols-2 gap-2 lg:grid-cols-1">
+                <div className="mt-4 grid grid-cols-[44px_44px_minmax(0,1fr)] gap-2">
                     <a
                         href="https://linkedin.com"
-                        className="flex h-9 items-center gap-2 rounded-full border border-[#e6e3e9] bg-white px-3 text-xs text-[#4c4953]"
+                        aria-label="LinkedIn profile"
+                        title="LinkedIn"
+                        className="grid h-11 w-11 place-items-center rounded-full bg-[#0878c9] text-white transition hover:brightness-95"
                     >
-                        <span className="grid h-6 w-6 place-items-center rounded-full bg-[#0878c9] font-bold text-white">
+                        <span className="text-[21px] font-extrabold leading-none tracking-[-.06em]">
                             in
                         </span>
-                        LinkedIn
+                    </a>
+                    <a
+                        href="https://instagram.com"
+                        aria-label="Instagram profile"
+                        title="Instagram"
+                        className="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-tr from-[#ffb83f] via-[#f32b76] to-[#773cf0] text-white transition hover:brightness-95"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            className="h-6 w-6"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            aria-hidden="true"
+                        >
+                            <rect x="3" y="3" width="18" height="18" rx="5" />
+                            <circle cx="12" cy="12" r="4" />
+                            <circle
+                                cx="18"
+                                cy="6"
+                                r="1"
+                                fill="currentColor"
+                                stroke="none"
+                            />
+                        </svg>
                     </a>
                     <a
                         href="https://srihithjoshi.work"
-                        className="flex h-9 items-center gap-2 rounded-full border border-[#e6e3e9] bg-white px-3 text-xs text-[#4c4953]"
+                        className="flex h-11 min-w-0 items-center justify-center gap-2 rounded-full border border-[#d9d7dd] bg-white px-3 text-sm text-[#17161d] transition hover:border-[#b5a0dc]"
                     >
-                        <Icon name="link" size={14} /> Website
+                        <Icon
+                            name="globe"
+                            size={18}
+                            className="text-[#7028f5]"
+                        />{" "}
+                        Website
                     </a>
                     <a
                         href="mailto:srihith@litstudent.in"
-                        className="col-span-2 flex h-9 items-center justify-center gap-2 rounded-full border border-[#e6e3e9] bg-white px-3 text-xs font-medium text-[#4c4953] lg:col-span-1"
+                        className="col-span-3 flex h-11 items-center justify-center gap-2 rounded-full border border-[#d9d7dd] bg-white px-3 text-sm font-medium text-[#17161d] transition hover:border-[#b5a0dc]"
                     >
-                        <Icon
-                            name="mail"
-                            size={14}
-                            className="text-[#18a982]"
-                        />{" "}
-                        Drop a message
+                        <EmailIcon /> Drop a Message!
                     </a>
                 </div>
                 {studentMode && (
@@ -92,7 +121,11 @@ export default function ProfileRail({ profile, studentMode, onEdit }) {
                     </p>
                     <div className="mt-3 border-t border-[#e4e2e7] pt-2.5">
                         <div className="text-[12px] font-bold text-[#48454f] flex items-center gap-1.5">
-                           <img src={Person1} alt="CHIRAG" className="w-6 h-6 rounded-full"></img>
+                            <img
+                                src={Person1}
+                                alt="CHIRAG"
+                                className="w-6 h-6 rounded-full"
+                            ></img>
                             CHIRAG KUSHWAHA
                         </div>
                         <p className="mt-1 text-[12px] text-[#85818c]">
@@ -121,7 +154,7 @@ export default function ProfileRail({ profile, studentMode, onEdit }) {
                             </p>
                         </div>
                     </div>
-                    <button className="mt-3 text-[9px] font-medium text-[#5c5962] underline">
+                    <button className="mt-3 !text-[13px] font-medium text-[#5c5962] underline">
                         View all achievements
                     </button>
                 </div>
@@ -129,9 +162,13 @@ export default function ProfileRail({ profile, studentMode, onEdit }) {
                     <h2 className="mb-3 text-[12px] font-bold uppercase tracking-[.17em] text-[#3776ff]">
                         Education
                     </h2>
-                    <div className="flex gap-2.5">
-                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[#e8e5ec] bg-white text-[10px] font-bold text-[#5c41a0]">
-                            J
+                    <div className="flex gap-2.5 border-b border-dashed border-gray-300 pb-4 mb-4">
+                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border-b border-[#e8e5ec] bg-white text-[10px] font-bold text-[#5c41a0] overflow-hidden">
+                            <img
+                                src={College1}
+                                alt="Jithu"
+                                className="w-full h-full"
+                            ></img>
                         </span>
                         <div>
                             <p className="text-[14px] font-semibold text-[#4e4b55]">
@@ -142,6 +179,26 @@ export default function ProfileRail({ profile, studentMode, onEdit }) {
                             </p>
                             <p className="text-[12px] text-[#98949e]">
                                 Jun 2020 — Jun 2024
+                            </p>
+                        </div>
+                    </div>
+                    <div className="flex gap-2.5 pb-4">
+                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[#e8e5ec] bg-white text-[10px] font-bold text-[#5c41a0] overflow-hidden">
+                            <img
+                                src={College2}
+                                alt="Vidya"
+                                className="w-full h-full"
+                            ></img>
+                        </span>
+                        <div>
+                            <p className="text-[14px] font-semibold text-[#4e4b55]">
+                                Vidya Niketan
+                            </p>
+                            <p className="mt-0.5 text-[12px] text-[#86828d]">
+                                ISC Commerce
+                            </p>
+                            <p className="text-[12px] text-[#98949e]">
+                                Jun 2018 – Jun 2020
                             </p>
                         </div>
                     </div>
