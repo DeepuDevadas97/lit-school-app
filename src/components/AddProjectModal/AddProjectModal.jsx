@@ -3,8 +3,8 @@ import Icon from "../Icon/Icon";
 import "./AddProjectModal.css";
 
 const inputClass =
-    "mt-1.5 w-full rounded-lg border border-[#d5dfeb] bg-white px-3 py-2.5 text-sm text-[#24222a] outline-none placeholder:text-[#b5b5bb] focus:border-[#7c61ff] focus:ring-2 focus:ring-[#7c61ff]/10 h-[38px]";
-const labelClass = "block text-[11px] font-semibold text-[#46434d]";
+    "mt-2 block w-full rounded-lg border border-[#d5dfeb] bg-white px-3 py-2.5 text-[14px] text-[#24222a] outline-none placeholder:text-[14px] placeholder:font-light placeholder:text-[#b5b5bb] focus:border-[#7c61ff] focus:ring-2 focus:ring-[#7c61ff]/10 h-[38px]";
+const labelClass = "block text-[13px] font-semibold text-[#46434d]";
 
 function RepeatableFields({
     title,
@@ -19,7 +19,7 @@ function RepeatableFields({
             items.map((item, i) => (i === index ? value : item)),
         );
     return (
-        <div className="space-y-2.5">
+        <div>
             <p className={labelClass}>{title}</p>
             {values.map((value, index) => (
                 <div
@@ -27,7 +27,7 @@ function RepeatableFields({
                     className="flex items-start gap-2"
                 >
                     <div className="relative min-w-0 flex-1">
-                        <span className="absolute left-3 top-3 text-[#5280f7]">
+                        <span className="absolute left-3 top-4 text-[#5280f7]">
                             {icon}
                         </span>
                         <input
@@ -57,7 +57,7 @@ function RepeatableFields({
             <button
                 type="button"
                 onClick={() => setValues((items) => [...items, ""])}
-                className="flex items-center gap-1 rounded-full border border-[#e3e2e6] px-3 py-1.5 !text-[13px] font-medium text-[#4f4b55] hover:bg-[#f8f7fa]"
+                className="flex items-center gap-1 rounded-full border border-[#e3e2e6] px-3 py-1.5 !text-[13px] font-medium text-[#4f4b55] hover:bg-[#f8f7fa] mt-3"
             >
                 <Icon name="plus" size={12} /> Add item
             </button>
@@ -163,7 +163,7 @@ export default function AddProjectModal({ onClose, onAdd }) {
                             />
                         ) : (
                             <>
-                                <span className="text-xs font-semibold text-[#55515b]">
+                                <span className="text-[13px] font-semibold text-[#55515b]">
                                     Upload Banner Image{" "}
                                     <span className="text-red-500">*</span>
                                 </span>
@@ -240,7 +240,7 @@ export default function AddProjectModal({ onClose, onAdd }) {
                                 Add up to 3 links/files
                             </span>
                         </div>
-                        <div className="mt-2 flex gap-2 items-center">
+                        <div className="mt-2 flex items-center gap-2">
                             <div className="relative min-w-0 flex-1">
                                 <Icon
                                     name={
@@ -249,7 +249,7 @@ export default function AddProjectModal({ onClose, onAdd }) {
                                             : "plus"
                                     }
                                     size={14}
-                                    className="absolute left-3 top-3 text-[#3478ff]"
+                                    className="absolute left-3 top-5 text-[#3478ff]"
                                 />
                                 {attachmentMode === "link" ? (
                                     <input
@@ -285,7 +285,7 @@ export default function AddProjectModal({ onClose, onAdd }) {
                                 }
                                 onClick={addAttachment}
                                 aria-label="Add link or file"
-                                className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-[#e2e0e6] text-[#8f8b96] disabled:opacity-40"
+                                className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-[#e2e0e6] text-[#8f8b96] disabled:opacity-40 mt-1"
                             >
                                 <Icon name="plus" size={15} />
                             </button>
@@ -359,7 +359,7 @@ export default function AddProjectModal({ onClose, onAdd }) {
                             }}
                             rows="3"
                             placeholder="A brief description of your project"
-                            className={`${inputClass} resize-y`}
+                            className={`${inputClass} resize-y min-h-[90px]`}
                         />
                     </label>
                     <label className={labelClass}>
@@ -369,7 +369,7 @@ export default function AddProjectModal({ onClose, onAdd }) {
                             onChange={(e) => setBreakdown(e.target.value)}
                             rows="4"
                             placeholder="Describe your project in detail"
-                            className={`${inputClass} resize-y`}
+                            className={`${inputClass} resize-y min-h-[90px]`}
                         />
                     </label>
                     <div className="border-t border-dashed border-[#dedde2] pt-4">
