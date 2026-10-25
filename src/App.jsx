@@ -17,7 +17,12 @@ export default function App() {
     const [filter, setFilter] = useState("All work");
     const [projects, setProjects] = useState(initialProjects);
     const [experiences, setExperiences] = useState(initialExperiences);
-    const [skillGroups, setSkillGroups] = useState(initialSkillGroups);
+    const [skillGroups, setSkillGroups] = useState(() =>
+        initialSkillGroups.map((group) => ({
+            ...group,
+            skills: group.skills.map((name) => ({ name, level: "expert" })),
+        })),
+    );
     const [profile, setProfile] = useState(initialProfile);
     const [activeProject, setActiveProject] = useState(null);
     const [addOpen, setAddOpen] = useState(false);
@@ -102,7 +107,7 @@ export default function App() {
                           skills: [
                               ...group.skills.map((skill) =>
                                   typeof skill === "string"
-                                      ? { name: skill, level: "intermediate" }
+                                      ? { name: skill, level: "expert" }
                                       : skill,
                               ),
                               ...newSkillItems.filter(

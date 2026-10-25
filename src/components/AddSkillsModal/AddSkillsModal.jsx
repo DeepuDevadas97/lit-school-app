@@ -5,7 +5,7 @@ const categories = ["Content Creation", "E Commerce", "Digital Marketing", "Soci
 
 export default function AddSkillsModal({ onClose, onSave }) {
     const [category, setCategory] = useState(categories[0]);
-    const [level, setLevel] = useState("intermediate");
+    const [level, setLevel] = useState("expert");
     const [skillsText, setSkillsText] = useState("");
 
     const submit = (event) => {

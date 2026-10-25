@@ -72,12 +72,12 @@ export default function SkillsSection({
                             {skills.map((skill, index) => (
                                 (() => {
                                     const name = typeof skill === "string" ? skill : skill.name;
-                                    const level = typeof skill === "string" ? "intermediate" : skill.level;
+                                    const level = typeof skill === "string" ? "expert" : skill.level || "expert";
                                     const levelClass = {
                                         expert: "bg-[#00a66c]",
                                         intermediate: "bg-[#f59e0b]",
                                         beginner: "bg-[#ef4444]",
-                                    }[level] || "bg-[#f59e0b]";
+                                    }[level] || "bg-[#00a66c]";
                                     return (
                                         <span
                                             key={`${category}-${name}-${index}`}
