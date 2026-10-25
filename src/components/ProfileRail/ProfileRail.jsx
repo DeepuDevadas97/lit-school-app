@@ -12,7 +12,7 @@ export default function ProfileRail({ profile, studentMode, onEdit }) {
             >
                 <div className="flex items-center gap-3 lg:block lg:mt-6">
                     <img
-                        className="h-[76px] w-[76px] shrink-0 rounded-full border-4 border-white object-cover shadow-[0_3px_14px_rgba(0,0,0,.14)] lg:-mt-10 lg:mb-4 lg:h-[96px] lg:w-[96px]"
+                        className="h-[76px] w-[76px] shrink-0 rounded-full border-4 border-white object-cover object-top shadow-[0_3px_14px_rgba(0,0,0,.14)] lg:-mt-10 lg:mb-4 lg:h-[96px] lg:w-[96px]"
                         src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=85"
                         alt={profile.name}
                     />
@@ -103,18 +103,18 @@ export default function ProfileRail({ profile, studentMode, onEdit }) {
                     </div>
                 </div>
                 <div className="mt-5 border-t border-[#e9e7ed] pt-4">
-                    <h2 className="mb-3 text-[10px] font-bold uppercase tracking-[.17em] text-[#ec5bcf]">
+                    <h2 className="mb-3 text-[12px] font-bold uppercase tracking-[.17em] text-[#ec5bcf]">
                         Achievements
                     </h2>
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex items-start gap-2.5">
                         <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#fff3d2] text-lg text-[#ed9e23]">
                             ✹
                         </span>
                         <div>
-                            <p className="text-[10px] font-medium leading-[1.4] text-[#55515c]">
+                            <p className="text-[14px] font-medium leading-[1.4] text-[#55515c]">
                                 State Level Recognition
                             </p>
-                            <p className="mt-0.5 text-[9px] text-[#898590]">
+                            <p className="mt-0.5 text-[12px] text-[#898590]">
                                 Telugu Mahasabha Speech Competition
                             </p>
                         </div>
@@ -124,7 +124,7 @@ export default function ProfileRail({ profile, studentMode, onEdit }) {
                     </button>
                 </div>
                 <div className="mt-5 border-t border-[#e9e7ed] pt-4">
-                    <h2 className="mb-3 text-[10px] font-bold uppercase tracking-[.17em] text-[#3776ff]">
+                    <h2 className="mb-3 text-[12px] font-bold uppercase tracking-[.17em] text-[#3776ff]">
                         Education
                     </h2>
                     <div className="flex gap-2.5">
@@ -132,13 +132,13 @@ export default function ProfileRail({ profile, studentMode, onEdit }) {
                             J
                         </span>
                         <div>
-                            <p className="text-[10px] font-semibold text-[#4e4b55]">
+                            <p className="text-[14px] font-semibold text-[#4e4b55]">
                                 JNTUH College of Engineering
                             </p>
-                            <p className="mt-0.5 text-[9px] text-[#86828d]">
+                            <p className="mt-0.5 text-[12px] text-[#86828d]">
                                 Graduation · Mechanical Engineering
                             </p>
-                            <p className="text-[9px] text-[#98949e]">
+                            <p className="text-[12px] text-[#98949e]">
                                 Jun 2020 — Jun 2024
                             </p>
                         </div>

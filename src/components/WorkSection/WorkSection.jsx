@@ -44,13 +44,13 @@ export default function WorkSection({
                 {studentMode && (
                     <button
                         onClick={onAdd}
-                        className="flex items-center gap-1.5 rounded-full bg-[#201b2c] px-4 py-2.5 text-xs font-semibold text-white hover:bg-[#3d3152]"
+                        className="flex items-center gap-1.5 rounded-full bg-[#201b2c] px-4 py-2.5 !text-sm font-semibold text-white hover:bg-[#3d3152]"
                     >
                         <Icon name="plus" size={15} /> Add proof
                     </button>
                 )}
             </div>
-            <div className="mt-5 flex flex-wrap items-end justify-between gap-x-4 gap-y-2 border-b border-[#e9e7ed]">
+            <div className="mt-7 flex flex-wrap items-end justify-between gap-x-4 gap-y-2 border-b border-[#e9e7ed]">
                 <div className="flex flex-wrap gap-x-5">
                     {["Projects", "Experience", "Skills"].map((item) => (
                         <button
@@ -80,7 +80,7 @@ export default function WorkSection({
             <div className="pt-5">
                 {tab === "Projects" && (
                     <>
-                        <div className="mb-4 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 text-[11px] text-[#85818d]">
+                        <div className="mb-4 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 text-[12px] text-[#85818d]">
                             <span className="min-w-0">
                                 {visibleProjects.length} selected projects{" "}
                                 <span className="mx-1 text-[#cac7d0]">·</span>{" "}
