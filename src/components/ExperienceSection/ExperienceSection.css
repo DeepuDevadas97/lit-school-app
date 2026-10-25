@@ -1,1 +1,25 @@
-/* Experience cards use Tailwind utility classes. */
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.experience-entry {
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid #e9e7ed;
+    background: #fff;
+}
+
+.experience-entry--expanded {
+    margin: 0 0 8px;
+    border: 0;
+    border-radius: 16px;
+    background: #fceafa;
+}
+
+@media (max-width: 639px) {
+    .experience-entry--expanded {
+        margin-bottom: 10px;
+    }
+}
