@@ -15,7 +15,7 @@ export default function LearningBadges() {
                 {badges.map(([label, color]) => (
                     <span
                         key={label}
-                        className="grid h-12 w-12 place-items-center rounded-[12px] text-[14px] font-extrabold text-white shadow-sm"
+                        className="learning-badge grid h-12 w-12 place-items-center rounded-[12px] text-[14px] font-extrabold text-white shadow-sm"
                         style={{
                             backgroundColor: color,
                             clipPath:

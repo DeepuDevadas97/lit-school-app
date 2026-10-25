@@ -1,4 +1,5 @@
 import "./SkillsSection.css";
+import ScrollReveal from "../ScrollReveal/ScrollReveal";
 
 export default function SkillsSection({
     studentMode = false,
@@ -63,8 +64,9 @@ export default function SkillsSection({
                 ))}
             </div>
             <div className="space-y-7 py-1 sm:space-y-8">
-                {groups.map(({ category, skills }) => (
-                    <section key={category}>
+                {groups.map(({ category, skills }, groupIndex) => (
+                    <ScrollReveal key={category} delay={Math.min(groupIndex * 55, 220)}>
+                    <section>
                         <h3 className="mb-3 text-[14px] font-medium text-[#393642]">
                             {category}
                         </h3>
@@ -93,6 +95,7 @@ export default function SkillsSection({
                             ))}
                         </div>
                     </section>
+                    </ScrollReveal>
                 ))}
             </div>
         </div>

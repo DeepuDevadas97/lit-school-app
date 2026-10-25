@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./ExperienceSection.css";
+import ScrollReveal from "../ScrollReveal/ScrollReveal";
 
 const mockExperiences = [
     {
@@ -187,17 +188,18 @@ export default function ExperienceSection({ experiences = mockExperiences, stude
                     </button>
                 </div>
             )}
-            {visibleExperiences.map((item) => (
-                <ExperienceRow
-                    key={item.id}
-                    item={item}
-                    expanded={expandedId === item.id}
-                    onToggle={() =>
-                        setExpandedId((current) =>
-                            current === item.id ? null : item.id,
-                        )
-                    }
-                />
+            {visibleExperiences.map((item, index) => (
+                <ScrollReveal key={item.id} delay={Math.min(index * 65, 260)}>
+                    <ExperienceRow
+                        item={item}
+                        expanded={expandedId === item.id}
+                        onToggle={() =>
+                            setExpandedId((current) =>
+                                current === item.id ? null : item.id,
+                            )
+                        }
+                    />
+                </ScrollReveal>
             ))}
            
         </div>

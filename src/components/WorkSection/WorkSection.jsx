@@ -2,6 +2,7 @@ import LearningBadges from "../LearningBadges/LearningBadges";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import ExperienceSection from "../ExperienceSection/ExperienceSection";
 import SkillsSection from "../SkillsSection/SkillsSection";
+import ScrollReveal from "../ScrollReveal/ScrollReveal";
 import { projectFilters } from "../../data/profile";
 import "./WorkSection.css";
 
@@ -143,16 +144,17 @@ export default function WorkSection({
                         {visibleProjects.length ? (
                             <div className="grid gap-4 sm:grid-cols-2">
                                 {visibleProjects.map((project, index) => (
-                                    <ProjectCard
-                                        key={project.id}
-                                        project={project}
-                                        index={index}
-                                        total={visibleProjects.length}
-                                        studentMode={studentMode}
-                                        onOpen={onOpen}
-                                        onToggle={onToggle}
-                                        onMove={onMove}
-                                    />
+                                    <ScrollReveal key={project.id} delay={Math.min(index * 70, 280)}>
+                                        <ProjectCard
+                                            project={project}
+                                            index={index}
+                                            total={visibleProjects.length}
+                                            studentMode={studentMode}
+                                            onOpen={onOpen}
+                                            onToggle={onToggle}
+                                            onMove={onMove}
+                                        />
+                                    </ScrollReveal>
                                 ))}
                             </div>
                         ) : (
