@@ -89,14 +89,31 @@ export default function App() {
         ]);
         setAddExperienceOpen(false);
     };
-    const addSkills = (category, newSkills) => {
+    const addSkills = (category, newSkills, level) => {
+        const newSkillItems = newSkills.map((name) => ({ name, level }));
         setSkillGroups((groups) => {
             const existing = groups.find((group) => group.category === category);
-            if (!existing) return [...groups, { category, skills: newSkills }];
+            if (!existing) return [...groups, { category, skills: newSkillItems }];
             return groups.map((group) =>
-                group.category === category
-                    ? { ...group, skills: [...new Set([...group.skills, ...newSkills])] }
-                    : group,
+                group.category !== category
+                    ? group
+                    : {
+                          ...group,
+                          skills: [
+                              ...group.skills.map((skill) =>
+                                  typeof skill === "string"
+                                      ? { name: skill, level: "intermediate" }
+                                      : skill,
+                              ),
+                              ...newSkillItems.filter(
+                                  (newSkill) =>
+                                      !group.skills.some(
+                                          (oldSkill) =>
+                                              (typeof oldSkill === "string" ? oldSkill : oldSkill.name).toLowerCase() === newSkill.name.toLowerCase(),
+                                      ),
+                              ),
+                          ],
+                      },
             );
         });
         setAddSkillsOpen(false);
