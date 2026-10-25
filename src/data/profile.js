@@ -77,6 +77,45 @@ export const initialProfile = {
     bio: "I turn ideas into stories people want to spend time with. I’m strongest at finding the angle, making the thing, and learning from how people respond.",
 };
 
+export const initialExperiences = [
+    {
+        id: "content-production-1",
+        role: "Content Production and Storytelling",
+        company: "Oben Electric",
+        date: "Feb 2021 – Oct 2021",
+        description:
+            "Joined to contribute to brand content through video editing while understanding how visuals and storytelling influence audience engagement.",
+        softSkills: ["Video Editing", "Adobe Premiere Pro", "Basic Storytelling", "Creativity", "Communication", "Communication", "Communication", "Leadership", "Collaboration"],
+        hardSkills: ["Video Editing", "Adobe Premiere Pro", "Basic Storytelling", "Creativity", "Communication", "Communication", "Communication", "Leadership", "Collaboration"],
+        tools: ["Premiere Pro", "Instagram"],
+        published: true,
+    },
+    {
+        id: "content-production-2",
+        role: "Content Production and Storytelling",
+        company: "Oben Electric",
+        date: "Feb 2021 – Oct 2021",
+        description:
+            "Joined to contribute to brand content through video editing while understanding how visuals and storytelling influence audience engagement.",
+        softSkills: ["Video Editing", "Adobe Premiere Pro", "Basic Storytelling", "Creativity", "Communication", "Communication", "Communication", "Leadership", "Collaboration"],
+        hardSkills: ["Video Editing", "Adobe Premiere Pro", "Basic Storytelling", "Creativity", "Communication", "Communication", "Communication", "Leadership", "Collaboration"],
+        tools: ["Premiere Pro", "Instagram"],
+        published: true,
+    },
+    {
+        id: "content-production-3",
+        role: "Creator & Marketer",
+        company: "Independent",
+        date: "2023 – Present",
+        description:
+            "Built a personal content channel from the ground up, learning production, publishing, and audience development by doing.",
+        softSkills: ["Storytelling", "Communication", "Creative thinking"],
+        hardSkills: ["Content strategy", "Video editing", "Analytics"],
+        tools: ["Instagram", "Premiere Pro"],
+        published: true,
+    },
+];
+
 export const projectFilters = [
     "All work",
     "Creator growth",

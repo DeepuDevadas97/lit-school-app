@@ -16,6 +16,8 @@ export default function WorkSection({
     onOpen,
     onToggle,
     onMove,
+    experiences,
+    onAddExperience,
 }) {
     const visibleProjects = projects.filter(
         (project) =>
@@ -62,7 +64,7 @@ export default function WorkSection({
                     aria-hidden={tab !== "Projects"}
                     tabIndex={tab === "Projects" ? 0 : -1}
                     disabled={tab !== "Projects"}
-                    className={`mb-2 ml-auto max-w-full rounded-lg border border-[#e8e5ec] bg-white px-2.5 py-1.5 text-[10px] text-[#625e69] outline-none ${tab !== "Projects" ? "invisible pointer-events-none" : ""}`}
+                    className={`mb-2 ml-auto max-w-full rounded-lg border border-[#e8e5ec] bg-white px-2.5 py-1.5 text-[10px] text-[#625e69] outline-none max-sm:hidden ${tab !== "Projects" ? "invisible pointer-events-none" : ""}`}
                 >
                     {projectFilters.map((item) => (
                         <option key={item}>{item}</option>
@@ -72,6 +74,19 @@ export default function WorkSection({
             <div className="pt-5">
                 {tab === "Projects" && (
                     <>
+                      <select
+                    value={filter}
+                    onChange={(event) => setFilter(event.target.value)}
+                    aria-label="Filter projects"
+                    aria-hidden={tab !== "Projects"}
+                    tabIndex={tab === "Projects" ? 0 : -1}
+                    disabled={tab !== "Projects"}
+                    className={`mb-5 ml-auto max-w-full rounded-lg border border-[#e8e5ec] bg-white px-2.5 py-1.5 text-[10px] text-[#625e69] outline-none sm:hidden ${tab !== "Projects" ? "invisible pointer-events-none" : ""}`}
+                >
+                    {projectFilters.map((item) => (
+                        <option key={item}>{item}</option>
+                    ))}
+                </select>
                         <div className="mb-4 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 text-[12px] text-[#85818d]">
                             <span className="min-w-0">
                                 {visibleProjects.length} selected projects{" "}
@@ -153,7 +168,13 @@ export default function WorkSection({
                         )}
                     </>
                 )}
-                {tab === "Experience" && <ExperienceSection />}
+                {tab === "Experience" && (
+                    <ExperienceSection
+                        experiences={experiences}
+                        studentMode={studentMode}
+                        onAdd={onAddExperience}
+                    />
+                )}
                 {tab === "Skills" && <SkillsSection />}
             </div>
         </section>

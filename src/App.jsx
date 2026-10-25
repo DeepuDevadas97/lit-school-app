@@ -4,19 +4,22 @@ import ProfileRail from "./components/ProfileRail/ProfileRail";
 import WorkSection from "./components/WorkSection/WorkSection";
 import ProjectModal from "./components/ProjectModal/ProjectModal";
 import AddProjectModal from "./components/AddProjectModal/AddProjectModal";
+import AddExperienceModal from "./components/AddExperienceModal/AddExperienceModal";
 import ProfileEditor from "./components/ProfileEditor/ProfileEditor";
 import Footer from "./components/Footer/Footer";
 import Icon from "./components/Icon/Icon";
-import { initialProfile, initialProjects } from "./data/profile";
+import { initialExperiences, initialProfile, initialProjects } from "./data/profile";
 
 export default function App() {
     const [studentMode, setStudentMode] = useState(false);
     const [tab, setTab] = useState("Projects");
     const [filter, setFilter] = useState("All work");
     const [projects, setProjects] = useState(initialProjects);
+    const [experiences, setExperiences] = useState(initialExperiences);
     const [profile, setProfile] = useState(initialProfile);
     const [activeProject, setActiveProject] = useState(null);
     const [addOpen, setAddOpen] = useState(false);
+    const [addExperienceOpen, setAddExperienceOpen] = useState(false);
     const [editOpen, setEditOpen] = useState(false);
     const [copied, setCopied] = useState(false);
 
@@ -76,6 +79,13 @@ export default function App() {
         setFilter("All work");
         setAddOpen(false);
     };
+    const addExperience = (data, publishLive) => {
+        setExperiences((items) => [
+            { ...data, published: publishLive },
+            ...items,
+        ]);
+        setAddExperienceOpen(false);
+    };
     const shareProfile = async () => {
         try {
             await navigator.clipboard.writeText(window.location.href);
@@ -123,6 +133,8 @@ export default function App() {
                         onOpen={setActiveProject}
                         onToggle={togglePublish}
                         onMove={moveProject}
+                        experiences={experiences}
+                        onAddExperience={() => setAddExperienceOpen(true)}
                     />
                 </div>
                 <Footer />
@@ -135,6 +147,12 @@ export default function App() {
                 <AddProjectModal
                     onClose={() => setAddOpen(false)}
                     onAdd={addProject}
+                />
+            )}
+            {addExperienceOpen && (
+                <AddExperienceModal
+                    onClose={() => setAddExperienceOpen(false)}
+                    onSave={addExperience}
                 />
             )}
             {editOpen && (
