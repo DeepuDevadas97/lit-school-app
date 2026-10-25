@@ -128,28 +128,31 @@ function ExperienceRow({ item, expanded, onToggle }) {
                     <p className="mt-1.5 text-[12px] text-[#77747e]">
                         {item.company}
                     </p>
-                    {expanded && (
-                        <p className="mt-3 max-w-[270px] text-[9px] leading-[1.35] text-[#8c8791] sm:mt-4">
-                            {item.description}
-                        </p>
-                    )}
                 </div>
                 <button
                     type="button"
                     onClick={onToggle}
                     aria-expanded={expanded}
+                    aria-controls={`experience-details-${item.id}`}
                     aria-label={`${expanded ? "Collapse" : "Expand"} ${item.role}`}
                     className="absolute right-4 top-4 grid h-6 w-6 place-items-center text-[22px] font-normal leading-none text-black sm:static sm:col-start-4 sm:ml-auto sm:mt-[-2px]"
                 >
                     {expanded ? "×" : "+"}
                 </button>
             </div>
-            {expanded && (
-                <div className="space-y-3.5 px-4 pb-5 sm:pl-[158px] sm:pr-[58px] sm:pt-0 sm:pb-5">
+            <div
+                id={`experience-details-${item.id}`}
+                className={`experience-details ${expanded ? "experience-details--open" : ""}`}
+                aria-hidden={!expanded}
+            >
+                <div className="experience-details-inner space-y-3.5 px-4 sm:pl-[158px] sm:pr-[58px]">
+                    <p className="max-w-[270px] text-[9px] leading-[1.35] text-[#8c8791]">
+                        {item.description}
+                    </p>
                     <SkillGroup title="Soft skills" skills={item.softSkills} />
                     <SkillGroup title="Hard Skills" skills={item.hardSkills} />
                 </div>
-            )}
+            </div>
         </article>
     );
 }
