@@ -87,7 +87,7 @@ export default function ProjectCard({
             </button>
             {studentMode && (
                 <div className="flex items-center justify-between border-t border-[#eeeaf4] bg-[#fbfaff] px-4 py-2.5">
-                    <span className="text-[10px] font-medium text-[#77727f]">
+                    <span className="text-[12px] font-medium text-[#77727f]">
                         {project.published
                             ? "Visible to recruiters"
                             : "Hidden from recruiters"}
@@ -111,7 +111,7 @@ export default function ProjectCard({
                         </button>
                         <button
                             onClick={() => onToggle(project.id)}
-                            className={`rounded-full px-2.5 py-1 text-[10px] font-semibold ${project.published ? "bg-[#e9f6ee] text-[#237446]" : "bg-[#efedf2] text-[#686474]"}`}
+                            className={`rounded-full px-2.5 py-1 !text-[14px] font-semibold ${project.published ? "bg-[#e9f6ee] text-[#237446]" : "bg-[#efedf2] text-[#686474]"}`}
                         >
                             {project.published ? "Published" : "Publish"}
                         </button>

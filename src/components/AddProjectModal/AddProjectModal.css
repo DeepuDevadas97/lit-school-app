@@ -1,1 +1,3 @@
-/* Dialog form layout uses Tailwind utility classes. */
+.add-proof-modal {
+  overscroll-behavior: contain;
+}

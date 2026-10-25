@@ -1,1 +1,9 @@
-/* Footer layout uses Tailwind utility classes. */
+.lit-footer {
+  width: 100%;
+}
+
+@media (max-width: 639px) {
+  .lit-footer > div:last-child {
+    margin-top: 2.75rem;
+  }
+}

@@ -40,25 +40,36 @@ export default function App() {
             ];
             return reordered;
         });
-    const addProject = (data) => {
+    const addProject = (data, publishLive) => {
         setProjects((items) => [
             {
                 id: Date.now(),
                 title: data.title,
-                client: "Independent project",
+                client: data.organization || "Independent project",
                 kind: "Personal project",
-                period: "Just added",
+                period:
+                    data.startDate || data.endDate
+                        ? `${data.startDate || "Start"} — ${data.endDate || "Present"}`
+                        : "Just added",
                 role: "Project lead",
                 description: data.description,
+                breakdown: data.breakdown,
                 outcome: data.outcome || "In progress",
                 outcomeLabel: data.outcome
                     ? "measurable impact"
                     : "building now",
-                proof: "Student added",
+                proof: data.attachments.length
+                    ? "Supporting evidence added"
+                    : "Student added",
                 accent: "violet",
-                image: "https://images.unsplash.com/photo-1455390582262-044c21d372e7?auto=format&fit=crop&w=1000&q=85",
-                published: false,
-                skills: ["Add your skills"],
+                image: data.bannerImage,
+                published: publishLive,
+                skills: data.skills.length ? data.skills : ["Add your skills"],
+                organization: data.organization,
+                attachments: data.attachments,
+                briefItems: data.briefItems,
+                impactItems: data.impactItems,
+                tools: data.tools,
             },
             ...items,
         ]);
@@ -78,7 +89,7 @@ export default function App() {
     return (
         <div id="top" className="min-h-screen bg-white text-[#25232b]">
             <Header studentMode={studentMode} setStudentMode={setStudentMode} />
-            <main className="mx-auto max-w-[1320px] px-4 pb-16 pt-5 sm:px-6 lg:px-10 lg:pt-6">
+            <main className="mx-auto max-w-[1320px] px-4 pb-10 pt-5 sm:px-6 lg:px-10 lg:pt-6">
                 <div className="mb-5 flex min-w-0 items-center justify-between gap-3">
                     <div className="flex min-w-0 items-center gap-2 overflow-hidden text-[12px] text-[#898691] font-semibold">
                         <span>Talent</span>
