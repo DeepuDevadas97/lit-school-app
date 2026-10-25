@@ -5,12 +5,13 @@ const categories = ["Content Creation", "E Commerce", "Digital Marketing", "Soci
 
 export default function AddSkillsModal({ onClose, onSave }) {
     const [category, setCategory] = useState(categories[0]);
+    const [level, setLevel] = useState("intermediate");
     const [skillsText, setSkillsText] = useState("");
 
     const submit = (event) => {
         event.preventDefault();
         const skills = skillsText.split(",").map((skill) => skill.trim()).filter(Boolean);
-        if (skills.length) onSave(category, skills);
+        if (skills.length) onSave(category, skills, level);
     };
 
     return (
@@ -30,6 +31,14 @@ export default function AddSkillsModal({ onClose, onSave }) {
                     Skill category
                     <select value={category} onChange={(event) => setCategory(event.target.value)} className="mt-2 block h-10 w-full rounded-lg border border-[#d5dfeb] bg-white px-3 text-[13px] font-normal outline-none focus:border-[#00a982]">
                         {categories.map((item) => <option key={item}>{item}</option>)}
+                    </select>
+                </label>
+                <label className="mt-5 block text-[13px] font-semibold text-[#46434d]">
+                    Proficiency level
+                    <select value={level} onChange={(event) => setLevel(event.target.value)} className="mt-2 block h-10 w-full rounded-lg border border-[#d5dfeb] bg-white px-3 text-[13px] font-normal capitalize outline-none focus:border-[#00a982]">
+                        <option value="expert">Expert</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="beginner">Beginner</option>
                     </select>
                 </label>
                 <label className="mt-5 block text-[13px] font-semibold text-[#46434d]">

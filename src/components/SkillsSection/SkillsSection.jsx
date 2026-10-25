@@ -50,6 +50,18 @@ export default function SkillsSection({
                 </div>
             )}
 
+            <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] text-[#6f6b76]">
+                {[
+                    ["Expert", "bg-[#00a66c]"],
+                    ["Intermediate", "bg-[#f59e0b]"],
+                    ["Beginner", "bg-[#ef4444]"],
+                ].map(([label, color]) => (
+                    <span key={label} className="inline-flex items-center gap-1.5">
+                        <span aria-hidden="true" className={`h-2 w-2 rounded-full ${color}`} />
+                        {label}
+                    </span>
+                ))}
+            </div>
             <div className="space-y-7 py-1 sm:space-y-8">
                 {groups.map(({ category, skills }) => (
                     <section key={category}>
@@ -58,12 +70,26 @@ export default function SkillsSection({
                         </h3>
                         <div className="flex flex-wrap gap-2">
                             {skills.map((skill, index) => (
-                                <span
-                                    key={`${category}-${skill}-${index}`}
-                                    className="rounded-md bg-[#f2f2f3] px-3 py-1.5 text-[12px] font-normal leading-[1.4] text-[#34313b] sm:text-[11px]"
-                                >
-                                    {skill}
-                                </span>
+                                (() => {
+                                    const name = typeof skill === "string" ? skill : skill.name;
+                                    const level = typeof skill === "string" ? "intermediate" : skill.level;
+                                    const levelClass = {
+                                        expert: "bg-[#00a66c]",
+                                        intermediate: "bg-[#f59e0b]",
+                                        beginner: "bg-[#ef4444]",
+                                    }[level] || "bg-[#f59e0b]";
+                                    return (
+                                        <span
+                                            key={`${category}-${name}-${index}`}
+                                            title={`${level[0].toUpperCase()}${level.slice(1)}`}
+                                            aria-label={`${name}, ${level}`}
+                                            className="inline-flex items-center gap-2 rounded-md bg-[#f2f2f3] px-3 py-1.5 text-[12px] font-normal leading-[1.4] text-[#34313b]"
+                                        >
+                                            {name}
+                                            <span aria-hidden="true" className={`h-1.5 w-1.5 shrink-0 rounded-full ${levelClass}`} />
+                                        </span>
+                                    );
+                                })()
                             ))}
                         </div>
                     </section>
