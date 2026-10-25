@@ -2,6 +2,7 @@ import GpsIcon from "../../assets/icons/GpsIcon";
 import UserStar from "../../assets/icons/UserStar";
 import Icon from "../Icon/Icon";
 import "./ProfileRail.css";
+import Person1 from '../../assets/images/Person1.png'
 
 export default function ProfileRail({ profile, studentMode, onEdit }) {
     return (
@@ -90,10 +91,11 @@ export default function ProfileRail({ profile, studentMode, onEdit }) {
                         connects with people.”
                     </p>
                     <div className="mt-3 border-t border-[#e4e2e7] pt-2.5">
-                        <p className="text-[12px] font-bold text-[#48454f]">
+                        <div className="text-[12px] font-bold text-[#48454f] flex items-center gap-1.5">
+                           <img src={Person1} alt="CHIRAG" className="w-6 h-6 rounded-full"></img>
                             CHIRAG KUSHWAHA
-                        </p>
-                        <p className="mt-0.5 text-[12px] text-[#85818c]">
+                        </div>
+                        <p className="mt-1 text-[12px] text-[#85818c]">
                             Creative Director · Industry Evaluator
                         </p>
                         <span className="mt-2 inline-flex items-center gap-1 text-[12px] font-semibold text-[#6b48a9]">
