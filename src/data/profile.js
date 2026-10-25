@@ -70,6 +70,7 @@ export const initialProjects = [
     },
 ];
 
+
 export const initialProfile = {
     name: "Srihith Joshi",
     headline: "Creator & brand storyteller",

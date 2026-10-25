@@ -1,4 +1,3 @@
-import Icon from "../Icon/Icon";
 import LearningBadges from "../LearningBadges/LearningBadges";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import ExperienceSection from "../ExperienceSection/ExperienceSection";
@@ -40,14 +39,6 @@ export default function WorkSection({
                         A few projects that make my strengths easier to see.
                     </p>
                 </div>
-                {studentMode && (
-                    <button
-                        onClick={onAdd}
-                        className="flex items-center gap-1.5 rounded-full bg-[#201b2c] px-4 py-2.5 !text-sm font-semibold text-white hover:bg-[#3d3152]"
-                    >
-                        <Icon name="plus" size={15} /> Add proof
-                    </button>
-                )}
             </div>
             <div className="mt-7 flex flex-wrap items-end justify-between gap-x-4 gap-y-2 border-b border-[#e9e7ed]">
                 <div className="flex flex-wrap gap-x-5">
@@ -94,6 +85,44 @@ export default function WorkSection({
                                 Clear filters
                             </button>
                         </div>
+                         {studentMode && (
+                            <div className="my-5 flex min-h-[186px] flex-col items-center justify-center rounded-[16px] bg-[#f1dcff] px-5 py-7 text-center sm:min-h-[205px]">
+                                <svg
+                                    className="mb-3 h-8 w-8 text-[#8700f5]"
+                                    viewBox="0 0 32 32"
+                                    fill="none"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="m16 2 11 4v8c0 7.2-4.4 12.4-11 16-6.6-3.6-11-8.8-11-16V6l11-4Z"
+                                        fill="currentColor"
+                                    />
+                                    <path
+                                        d="m16 7 2.2 5 5.4.5-4.1 3.6 1.2 5.3-4.7-2.7-4.7 2.7 1.2-5.3-4.1-3.6 5.4-.5L16 7Z"
+                                        fill="white"
+                                    />
+                                </svg>
+                                <h3 className="max-w-[390px] text-[18px] font-extrabold uppercase leading-[1.15] tracking-[-.02em] text-[#8500f5] sm:text-[21px]">
+                                    All your projects will
+                                    <br className="hidden sm:block" /> reflect
+                                    here
+                                </h3>
+                                <p className="mt-2 max-w-[480px] text-[11px] leading-[1.5] text-[#30283a]">
+                                    All brand challenges for which you have been
+                                    scored will reflect here along with any
+                                    additional projects you may choose to add.
+                                </p>
+                                <button
+                                    onClick={onAdd}
+                                    className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-[#ded9e5] bg-white px-3.5 py-1.5 text-[10px] font-medium text-[#29252f] transition hover:border-[#9d56e9] hover:text-[#7d00e8]"
+                                >
+                                    <span className="grid h-4 w-4 place-items-center rounded-full border border-[#9b36f4] text-[12px] leading-none text-[#8c1be8]">
+                                        +
+                                    </span>
+                                    Create New Project
+                                </button>
+                            </div>
+                        )}
                         {visibleProjects.length ? (
                             <div className="grid gap-4 sm:grid-cols-2">
                                 {visibleProjects.map((project, index) => (
