@@ -5,10 +5,11 @@ import WorkSection from "./components/WorkSection/WorkSection";
 import ProjectModal from "./components/ProjectModal/ProjectModal";
 import AddProjectModal from "./components/AddProjectModal/AddProjectModal";
 import AddExperienceModal from "./components/AddExperienceModal/AddExperienceModal";
+import AddSkillsModal from "./components/AddSkillsModal/AddSkillsModal";
 import ProfileEditor from "./components/ProfileEditor/ProfileEditor";
 import Footer from "./components/Footer/Footer";
 import Icon from "./components/Icon/Icon";
-import { initialExperiences, initialProfile, initialProjects } from "./data/profile";
+import { initialExperiences, initialProfile, initialProjects, initialSkillGroups } from "./data/profile";
 
 export default function App() {
     const [studentMode, setStudentMode] = useState(false);
@@ -16,10 +17,12 @@ export default function App() {
     const [filter, setFilter] = useState("All work");
     const [projects, setProjects] = useState(initialProjects);
     const [experiences, setExperiences] = useState(initialExperiences);
+    const [skillGroups, setSkillGroups] = useState(initialSkillGroups);
     const [profile, setProfile] = useState(initialProfile);
     const [activeProject, setActiveProject] = useState(null);
     const [addOpen, setAddOpen] = useState(false);
     const [addExperienceOpen, setAddExperienceOpen] = useState(false);
+    const [addSkillsOpen, setAddSkillsOpen] = useState(false);
     const [editOpen, setEditOpen] = useState(false);
     const [copied, setCopied] = useState(false);
 
@@ -86,6 +89,18 @@ export default function App() {
         ]);
         setAddExperienceOpen(false);
     };
+    const addSkills = (category, newSkills) => {
+        setSkillGroups((groups) => {
+            const existing = groups.find((group) => group.category === category);
+            if (!existing) return [...groups, { category, skills: newSkills }];
+            return groups.map((group) =>
+                group.category === category
+                    ? { ...group, skills: [...new Set([...group.skills, ...newSkills])] }
+                    : group,
+            );
+        });
+        setAddSkillsOpen(false);
+    };
     const shareProfile = async () => {
         try {
             await navigator.clipboard.writeText(window.location.href);
@@ -135,6 +150,8 @@ export default function App() {
                         onMove={moveProject}
                         experiences={experiences}
                         onAddExperience={() => setAddExperienceOpen(true)}
+                        skillGroups={skillGroups}
+                        onAddSkills={() => setAddSkillsOpen(true)}
                     />
                 </div>
                 <Footer />
@@ -153,6 +170,12 @@ export default function App() {
                 <AddExperienceModal
                     onClose={() => setAddExperienceOpen(false)}
                     onSave={addExperience}
+                />
+            )}
+            {addSkillsOpen && (
+                <AddSkillsModal
+                    onClose={() => setAddSkillsOpen(false)}
+                    onSave={addSkills}
                 />
             )}
             {editOpen && (

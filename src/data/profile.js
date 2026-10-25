@@ -116,6 +116,14 @@ export const initialExperiences = [
     },
 ];
 
+export const initialSkillGroups = [
+    { category: "Content Creation", skills: ["Content Creation", "Adaptability", "Adobe Premiere Pro", "AI Tools for Content", "Audience Empathy", "Copywriting", "Creative Thinking", "Documentary Filmmaking", "Content Strategy"] },
+    { category: "E Commerce", skills: ["Conversion Rate Optimization", "Dropshipping"] },
+    { category: "Digital Marketing", skills: ["AI Tools for Social Media", "AIDA Framework", "Algorithm Decoding", "Audience Insight", "Campaign Management", "Campaign Planning", "Content Marketing Funnels", "Social Media Analytics", "Documentary Filmmaking", "Social Media Strategy", "STP Framework"] },
+    { category: "Social Media", skills: ["Affiliate Marketing", "AI Content Tools", "Audience Psychology", "Content Calendar", "Content Repurposing", "Creative Problem Solving", "Creator Mindset", "Leadership", "Networking", "Niche Clarity", "Strategic Thinking", "YouTube Mastery"] },
+    { category: "Web Development", skills: ["Figma (UI/UX Design)", "Form & Funnel Building", "Landing Page Design", "Project Management", "Responsive Design", "Webflow Development", "Website Analytics", "Website Funnels"] },
+];
+
 export const projectFilters = [
     "All work",
     "Creator growth",

@@ -166,7 +166,7 @@ export default function ExperienceSection({ experiences = mockExperiences, stude
     return (
         <div className="experience-list" aria-label="Work experience">
              {studentMode && (
-                <div className="my-5 flex min-h-[186px] flex-col items-center justify-center rounded-[16px] bg-[#dfe8ff] px-5 py-7 text-center sm:min-h-[210px]">
+                <div className="my-5 flex min-h-[186px] flex-col items-center justify-center rounded-[16px] bg-[#dfe8ff] px-5 py-7 text-center sm:min-h-[238px]">
                     <svg className="mb-3 h-8 w-8 text-[#0755ff]" viewBox="0 0 32 32" fill="none" aria-hidden="true">
                         <path d="m16 2 11 4v8c0 7.2-4.4 12.4-11 16-6.6-3.6-11-8.8-11-16V6l11-4Z" fill="currentColor" />
                         <path d="m16 7 2.2 5 5.4.5-4.1 3.6 1.2 5.3-4.7-2.7-4.7 2.7 1.2-5.3-4.1-3.6 5.4-.5L16 7Z" fill="white" />

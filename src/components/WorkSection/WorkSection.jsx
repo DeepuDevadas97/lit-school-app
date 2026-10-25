@@ -18,6 +18,8 @@ export default function WorkSection({
     onMove,
     experiences,
     onAddExperience,
+    skillGroups,
+    onAddSkills,
 }) {
     const visibleProjects = projects.filter(
         (project) =>
@@ -175,7 +177,13 @@ export default function WorkSection({
                         onAdd={onAddExperience}
                     />
                 )}
-                {tab === "Skills" && <SkillsSection />}
+                {tab === "Skills" && (
+                    <SkillsSection
+                        studentMode={studentMode}
+                        groups={skillGroups}
+                        onAddSkills={onAddSkills}
+                    />
+                )}
             </div>
         </section>
     );
