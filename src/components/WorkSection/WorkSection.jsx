@@ -1,5 +1,4 @@
 import Icon from "../Icon/Icon";
-import SectionHeading from "../SectionHeading/SectionHeading";
 import LearningBadges from "../LearningBadges/LearningBadges";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import ExperienceSection from "../ExperienceSection/ExperienceSection";
@@ -65,17 +64,19 @@ export default function WorkSection({
                         </button>
                     ))}
                 </div>
-                {tab === "Projects" && (
-                    <select
-                        value={filter}
-                        onChange={(event) => setFilter(event.target.value)}
-                        className="mb-2 ml-auto max-w-full rounded-lg border border-[#e8e5ec] bg-white px-2.5 py-1.5 text-[10px] text-[#625e69] outline-none"
-                    >
-                        {projectFilters.map((item) => (
-                            <option key={item}>{item}</option>
-                        ))}
-                    </select>
-                )}
+                <select
+                    value={filter}
+                    onChange={(event) => setFilter(event.target.value)}
+                    aria-label="Filter projects"
+                    aria-hidden={tab !== "Projects"}
+                    tabIndex={tab === "Projects" ? 0 : -1}
+                    disabled={tab !== "Projects"}
+                    className={`mb-2 ml-auto max-w-full rounded-lg border border-[#e8e5ec] bg-white px-2.5 py-1.5 text-[10px] text-[#625e69] outline-none ${tab !== "Projects" ? "invisible pointer-events-none" : ""}`}
+                >
+                    {projectFilters.map((item) => (
+                        <option key={item}>{item}</option>
+                    ))}
+                </select>
             </div>
             <div className="pt-5">
                 {tab === "Projects" && (
