@@ -44,7 +44,7 @@ export default function WorkSection({
                     </p>
                 </div>
             </div>
-            <div className="mt-7 flex flex-wrap items-end justify-between gap-x-4 gap-y-2 border-b border-[#e9e7ed]">
+            <div className="sticky top-0 z-30 mt-7 flex flex-wrap items-end justify-between gap-x-4 gap-y-2 border-b border-[#e9e7ed] bg-white pt-2">
                 <div className="flex flex-wrap gap-x-5">
                     {["Projects", "Experience", "Skills"].map((item) => (
                         <button

@@ -18,7 +18,7 @@ export default function ProjectCard({
 }) {
     return (
         <article
-            className={`group overflow-hidden rounded-[20px] border bg-white transition hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(38,29,58,.1)] ${project.featured ? "border-[#d8c8fa] ring-1 ring-[#eee8fb]" : "border-[#ebe9ef]"} ${!project.published ? "opacity-55" : ""}`}
+            className={`group overflow-hidden rounded-[20px] border border-[#ebe9ef] bg-white transition hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(38,29,58,.1)] ${!project.published ? "opacity-55" : ""}`}
         >
             <button
                 onClick={() => onOpen(project)}
