@@ -70,7 +70,7 @@ export default function ProjectModal({ project, onClose }) {
                             <p className="text-[10px] font-semibold uppercase tracking-[.14em] text-[#8b8498]">
                                 Result
                             </p>
-                            <p className="mt-2 min-w-0 break-words text-[16px] font-semibold tracking-tight text-[#292431] line-clamp-9">
+                            <p className="mt-2 min-w-0 break-words text-[16px] font-semibold tracking-tight text-[#292431] line-clamp-7">
                                 {project.outcome}
                             </p>
                             <p className="text-xs text-[#77717f]">
