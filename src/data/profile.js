@@ -137,8 +137,8 @@ export const initialAchievements = [
 ];
 
 export const initialEducation = [
-    { id: "education-jntuh", degree: "Graduation", institution: "JNTUH college of engineering", program: "Mechanical Engineering", date: "Jun 2020 – Jun 2024", logo: "college", certificate: "", published: true },
-    { id: "education-vidya", degree: "ISC Commerce", institution: "Vidya Niketan", program: "", date: "Jun 2018 – Jun 2020", logo: "vidya", certificate: "", published: true },
+    { id: "education-jntuh", degree: "Graduation", institution: "JNTUH college of engineering", program: "Mechanical Engineering", startDate: "2020-06-01", endDate: "2024-06-01", date: "Jun 2020 – Jun 2024", logo: "college", certificate: "", published: true },
+    { id: "education-vidya", degree: "ISC Commerce", institution: "Vidya Niketan", program: "", startDate: "2018-06-01", endDate: "2020-06-01", date: "Jun 2018 – Jun 2020", logo: "vidya", certificate: "", published: true },
 ];
 
 export const projectFilters = [

@@ -49,7 +49,8 @@ export default function AddEducationModal({
 }) {
     const [degree, setDegree] = useState("");
     const [institution, setInstitution] = useState("");
-    const [date, setDate] = useState("");
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
     const [certificateMode, setCertificateMode] = useState("link");
     const [certificateLink, setCertificateLink] = useState("");
     const [certificateFile, setCertificateFile] = useState(null);
@@ -58,7 +59,8 @@ export default function AddEducationModal({
     const reset = () => {
         setDegree("");
         setInstitution("");
-        setDate("");
+        setStartDate("");
+        setEndDate("");
         setCertificateLink("");
         setCertificateFile(null);
         setEditingId(null);
@@ -70,7 +72,8 @@ export default function AddEducationModal({
                 : item.degree || "",
         );
         setInstitution(item.institution || "");
-        setDate(item.date || "");
+        setStartDate(item.startDate || "");
+        setEndDate(item.endDate || "");
         setCertificateLink(item.certificate || "");
         setCertificateFile(null);
         setEditingId(item.id);
@@ -81,13 +84,25 @@ export default function AddEducationModal({
             certificateMode === "file"
                 ? certificateFile?.name || ""
                 : certificateLink.trim();
+        const toPeriodLabel = (value) =>
+            value
+                ? new Date(`${value}T00:00:00`).toLocaleDateString("en-US", {
+                      month: "short",
+                      year: "numeric",
+                  })
+                : "";
+        const date = [toPeriodLabel(startDate), toPeriodLabel(endDate)]
+            .filter(Boolean)
+            .join(" – ");
         onSave(
             {
                 id: editingId || Date.now(),
                 degree: degree.trim(),
                 institution: institution.trim(),
                 program: "",
-                date: date.trim(),
+                startDate,
+                endDate,
+                date: date || "Dates not specified",
                 logo: editingId
                     ? education.find((item) => item.id === editingId)?.logo ||
                       "initials"
@@ -137,8 +152,8 @@ export default function AddEducationModal({
                             className={inputClass}
                         />
                     </label>
-                    <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-[1fr_0.95fr]">
-                        <label className={labelClass}>
+                    <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                        <label className={`${labelClass} sm:col-span-2`}>
                             Institute/Organisation{" "}
                             <span className="text-red-500">*</span>
                             <input
@@ -152,13 +167,20 @@ export default function AddEducationModal({
                             />
                         </label>
                         <label className={labelClass}>
-                            Date
+                            Start Date
                             <input
-                                value={date}
-                                onChange={(event) =>
-                                    setDate(event.target.value)
-                                }
-                                placeholder="DD/MM/YYYY"
+                                type="date"
+                                value={startDate}
+                                onChange={(event) => setStartDate(event.target.value)}
+                                className={inputClass}
+                            />
+                        </label>
+                        <label className={labelClass}>
+                            End Date
+                            <input
+                                type="date"
+                                value={endDate}
+                                onChange={(event) => setEndDate(event.target.value)}
                                 className={inputClass}
                             />
                         </label>
