@@ -3,6 +3,9 @@ import ProjectCard from "../ProjectCard/ProjectCard";
 import ExperienceSection from "../ExperienceSection/ExperienceSection";
 import SkillsSection from "../SkillsSection/SkillsSection";
 import ScrollReveal from "../ScrollReveal/ScrollReveal";
+import ProjectIcon from "../../assets/icons/ProjectIcon";
+import ExperienceIcon from "../../assets/icons/Experience";
+import SkillsIcon from "../../assets/icons/SkillsIcon";
 import { projectFilters } from "../../data/profile";
 import "./WorkSection.css";
 
@@ -47,14 +50,19 @@ export default function WorkSection({
             </div>
             <div className="sticky top-0 z-30 mt-7 flex flex-wrap items-end justify-between gap-x-4 gap-y-2 border-b border-[#e9e7ed] bg-white pt-2">
                 <div className="flex flex-wrap gap-x-5">
-                    {["Projects", "Experience", "Skills"].map((item) => (
+                    {[
+                        { label: "Projects", Icon: ProjectIcon },
+                        { label: "Experience", Icon: ExperienceIcon },
+                        { label: "Skills", Icon: SkillsIcon },
+                    ].map(({ label, Icon: TabIcon }) => (
                         <button
-                            key={item}
-                            onClick={() => setTab(item)}
-                            className={`relative whitespace-nowrap pb-3 text-xs !font-medium transition ${tab === item ? "text-[#27242e]" : "text-[#9996a0] hover:text-[#5b5763]"}`}
+                            key={label}
+                            onClick={() => setTab(label)}
+                            className={`relative flex items-center gap-2 whitespace-nowrap pb-3 text-xs !font-medium transition ${tab === label ? "text-[#27242e]" : "text-[#9996a0] hover:text-[#5b5763]"}`}
                         >
-                            {item}
-                            {tab === item && (
+                            <span className="[&_svg]:h-4 [&_svg]:w-4"><TabIcon /></span>
+                            {label}
+                            {tab === label && (
                                 <span className="absolute inset-x-0 -bottom-px h-[2px] rounded-full bg-[#27242e]" />
                             )}
                         </button>
