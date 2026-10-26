@@ -29,7 +29,7 @@ export default function SkillsSection({
                             fill="#0755ff"
                         />
                     </svg>
-                    <h3 className="max-w-[440px] text-[21px] font-extrabold uppercase leading-[1.16] tracking-[-.025em] text-[#00a982] sm:text-[21px]">
+                    <h3 className="max-w-[440px] text-[21px] font-extrabold uppercase leading-[1.16] tracking-[-.025em] text-[#00a982] sm:text-[21px] !capitalize">
                         Your skill bank will reflect
                         <br className="hidden sm:block" /> here
                     </h3>

@@ -120,12 +120,12 @@ export default function WorkSection({
                                         fill="white"
                                     />
                                 </svg>
-                                <h3 className="max-w-[390px] text-[18px] font-extrabold uppercase leading-[1.15] tracking-[-.02em] text-[#8500f5] sm:text-[21px]">
+                                <h3 className="max-w-[390px] text-[18px] font-extrabold uppercase leading-[1.15] tracking-[-.02em] text-[#8500f5] sm:text-[21px] !capitalize">
                                     All your projects will
                                     <br className="hidden sm:block" /> reflect
                                     here
                                 </h3>
-                                <p className="mt-2 max-w-[480px] text-[11px] leading-[1.5] text-[#30283a]">
+                                <p className="mt-2 max-w-[480px] text-[12px] leading-[1.5] text-[#30283a]">
                                     All brand challenges for which you have been
                                     scored will reflect here along with any
                                     additional projects you may choose to add.

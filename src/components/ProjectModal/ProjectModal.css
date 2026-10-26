@@ -1,1 +1,32 @@
 /* Dialog layout uses Tailwind utility classes. */
+.project-modal-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #b7afc4 transparent;
+    scrollbar-gutter: stable;
+    overscroll-behavior: contain;
+}
+
+.project-modal-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.project-modal-scroll::-webkit-scrollbar-track {
+    background: transparent;
+    margin-block: 14px;
+}
+
+.project-modal-scroll::-webkit-scrollbar-thumb {
+    border: 2px solid #fff;
+    border-radius: 999px;
+    background: #b7afc4;
+}
+
+.project-modal-scroll::-webkit-scrollbar-thumb:hover {
+    background: #8e829e;
+}
+
+.project-modal-scroll::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}

@@ -91,14 +91,14 @@ function SkillGroup({ title, skills }) {
 
     return (
         <div>
-            <h4 className="mb-1.5 text-[10px] font-medium text-[#27242e]">
+            <h4 className="mb-1.5 text-[12px] font-medium text-[#27242e]">
                 {title}
             </h4>
             <div className="flex flex-wrap gap-1.5">
                 {visibleSkills.map((skill, index) => (
                     <span
                         key={`${skill}-${index}`}
-                        className="rounded-full bg-white px-2.5 py-1 text-[10px] leading-[1.4] text-[#24222a]"
+                        className="rounded-full bg-white px-2.5 py-1 text-[12px] leading-[1.4] text-[#24222a]"
                     >
                         {skill}
                     </span>
@@ -172,10 +172,10 @@ export default function ExperienceSection({ experiences = mockExperiences, stude
                         <path d="m16 2 11 4v8c0 7.2-4.4 12.4-11 16-6.6-3.6-11-8.8-11-16V6l11-4Z" fill="currentColor" />
                         <path d="m16 7 2.2 5 5.4.5-4.1 3.6 1.2 5.3-4.7-2.7-4.7 2.7 1.2-5.3-4.1-3.6 5.4-.5L16 7Z" fill="white" />
                     </svg>
-                    <h3 className="text-[18px] font-extrabold uppercase leading-[1.15] tracking-[-.02em] text-[#0755ff] sm:text-[21px]">
+                    <h3 className="text-[18px] font-extrabold uppercase leading-[1.15] tracking-[-.02em] text-[#0755ff] sm:text-[21px] !capitalize">
                         Showcase your work<br /> experience
                     </h3>
-                    <p className="mt-2 text-[11px] leading-[1.5] text-[#30283a]">
+                    <p className="mt-2 text-[12px] leading-[1.5] text-[#30283a]">
                         List your past industry experiences (outside of your curriculum)
                     </p>
                     <button
