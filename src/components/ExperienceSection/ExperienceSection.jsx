@@ -123,7 +123,7 @@ function ExperienceRow({ item, expanded, onToggle }) {
                     {item.date}
                 </p>
                 <div className="min-w-0">
-                    <h3 className="max-w-[260px] text-[14px] font-semibold leading-[1.2] tracking-[-.02em] text-black">
+                    <h3 className="max-w-[260px] text-[15px] font-semibold leading-[1.2] tracking-[-.02em] text-black">
                         {item.role}
                     </h3>
                     <p className="mt-1.5 text-[12px] text-[#77747e]">
