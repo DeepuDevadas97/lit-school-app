@@ -7,7 +7,13 @@ import College1 from "../../assets/images/College1.png";
 import College2 from "../../assets/images/College2.png";
 import EmailIcon from "../../assets/icons/EmailIcon";
 
-export default function ProfileRail({ profile, studentMode, onEdit, achievements = [], onAddAchievement }) {
+export default function ProfileRail({
+    profile,
+    studentMode,
+    onEdit,
+    achievements = [],
+    onAddAchievement,
+}) {
     const visibleAchievements = studentMode
         ? achievements
         : achievements.filter((achievement) => achievement.published);
@@ -35,28 +41,34 @@ export default function ProfileRail({ profile, studentMode, onEdit, achievements
                 </div>
                 <div className="mt-4 sm:mt-2 text-sm text-[#696672] flex items-center gap-1.5">
                     <GpsIcon />
-                    Bengaluru, India
+                    {profile.location || "Add your location"}
                 </div>
-                {/* <div className="mt-1 text-sm text-[#696672]">
-                    <span className="mr-2 text-[#eb5ac5]">⌖</span>Open to work ·
-                    Content roles
-                </div> */}
+                {profile.openToWork && (
+                    <div className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-[#e9f7f1] px-2.5 py-1 text-[11px] font-semibold text-[#16835d]">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#16a36f]" />
+                        Open to work
+                    </div>
+                )}
                 <div className="mt-4 grid grid-cols-[44px_44px_minmax(0,1fr)] gap-2">
                     <a
-                        href="https://linkedin.com"
+                        href={profile.linkedin || undefined}
                         aria-label="LinkedIn profile"
                         title="LinkedIn"
-                        className="grid h-11 w-11 place-items-center rounded-full bg-[#0878c9] text-white transition hover:brightness-95"
+                        className={`grid h-11 w-11 place-items-center rounded-full bg-[#0878c9] text-white transition hover:brightness-95 ${profile.linkedin ? "" : "pointer-events-none opacity-40"}`}
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         <span className="text-[21px] font-extrabold leading-none tracking-[-.06em]">
                             in
                         </span>
                     </a>
                     <a
-                        href="https://instagram.com"
+                        href={profile.instagram || undefined}
                         aria-label="Instagram profile"
                         title="Instagram"
-                        className="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-tr from-[#ffb83f] via-[#f32b76] to-[#773cf0] text-white transition hover:brightness-95"
+                        className={`grid h-11 w-11 place-items-center rounded-full bg-gradient-to-tr from-[#ffb83f] via-[#f32b76] to-[#773cf0] text-white transition hover:brightness-95 ${profile.instagram ? "" : "pointer-events-none opacity-40"}`}
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         <svg
                             viewBox="0 0 24 24"
@@ -78,8 +90,10 @@ export default function ProfileRail({ profile, studentMode, onEdit, achievements
                         </svg>
                     </a>
                     <a
-                        href="https://srihithjoshi.work"
-                        className="flex h-11 min-w-0 items-center justify-center gap-2 rounded-full border border-[#d9d7dd] bg-white px-3 text-sm text-[#17161d] transition hover:border-[#b5a0dc]"
+                        href={profile.website || undefined}
+                        target={profile.website ? "_blank" : undefined}
+                        rel={profile.website ? "noreferrer" : undefined}
+                        className={`flex h-11 min-w-0 items-center justify-center gap-2 rounded-full border border-[#d9d7dd] bg-white px-3 text-sm text-[#17161d] transition hover:border-[#b5a0dc] ${profile.website ? "" : "pointer-events-none opacity-40"}`}
                     >
                         <Icon
                             name="globe"
@@ -98,7 +112,7 @@ export default function ProfileRail({ profile, studentMode, onEdit, achievements
                 {studentMode && (
                     <button
                         onClick={onEdit}
-                        className="mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-full border border-[#e2d9f3] bg-white text-xs font-semibold text-[#6139ae] hover:bg-[#f8f5ff]"
+                        className="mt-2 flex h-11 w-full items-center justify-center gap-1.5 rounded-full border border-[#e2d9f3] bg-white text-xs font-semibold text-[#6139ae] hover:bg-[#f8f5ff]"
                     >
                         <Icon name="edit" size={14} /> Edit profile
                     </button>
@@ -142,27 +156,49 @@ export default function ProfileRail({ profile, studentMode, onEdit, achievements
                 </div>
                 <div className="mt-5 border-t border-[#e9e7ed] pt-4">
                     <div className="mb-3 flex items-center justify-between gap-2">
-                        <h2 className="text-[12px] font-bold uppercase tracking-[.17em] text-[#ec5bcf]">Achievements</h2>
+                        <h2 className="text-[12px] font-bold uppercase tracking-[.17em] text-[#ec5bcf]">
+                            Achievements
+                        </h2>
                         {studentMode && (
-                            <button onClick={onAddAchievement} className="rounded-full border border-[#eadff0] px-2.5 py-1 !text-[14px] font-semibold text-[#8a48b4] hover:bg-[#fff8ff]">
+                            <button
+                                onClick={onAddAchievement}
+                                className="rounded-full border border-[#eadff0] px-2.5 py-1 !text-[14px] font-semibold text-[#8a48b4] hover:bg-[#fff8ff]"
+                            >
                                 + Add
                             </button>
                         )}
                     </div>
                     <div className="space-y-3">
-                        {visibleAchievements.slice(0, studentMode ? 3 : 2).map((achievement) => (
-                            <div key={achievement.id} className="flex items-start gap-2.5 border-b border-dashed border-[#e5e2e8] pb-3 last:border-0 last:pb-0">
-                                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#fff3d2] text-lg text-[#ed9e23]">✹</span>
-                                <div className="min-w-0">
-                                    <p className="text-[12px] font-medium leading-[1.35] text-[#55515c]">{achievement.title}</p>
-                                    <p className="mt-0.5 text-[10px] leading-[1.4] text-[#898590]">{achievement.issuer}</p>
+                        {visibleAchievements
+                            .slice(0, studentMode ? 3 : 2)
+                            .map((achievement) => (
+                                <div
+                                    key={achievement.id}
+                                    className="flex items-start gap-2.5 border-b border-dashed border-[#e5e2e8] pb-3 last:border-0 last:pb-0"
+                                >
+                                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#fff3d2] text-lg text-[#ed9e23]">
+                                        ✹
+                                    </span>
+                                    <div className="min-w-0">
+                                        <p className="text-[12px] font-medium leading-[1.35] text-[#55515c]">
+                                            {achievement.title}
+                                        </p>
+                                        <p className="mt-0.5 text-[10px] leading-[1.4] text-[#898590]">
+                                            {achievement.issuer}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                        {visibleAchievements.length === 0 && <p className="rounded-lg bg-[#f5f4f6] p-3 text-[11px] text-[#898590]">Your achievements will appear here.</p>}
+                            ))}
+                        {visibleAchievements.length === 0 && (
+                            <p className="rounded-lg bg-[#f5f4f6] p-3 text-[11px] text-[#898590]">
+                                Your achievements will appear here.
+                            </p>
+                        )}
                     </div>
                     {visibleAchievements.length > (studentMode ? 3 : 2) && (
-                        <button className="mt-3 !text-[12px] font-medium text-[#5c5962] underline">View all achievements</button>
+                        <button className="mt-3 !text-[12px] font-medium text-[#5c5962] underline">
+                            View all achievements
+                        </button>
                     )}
                 </div>
                 <div className="mt-5 border-t border-[#e9e7ed] pt-4">

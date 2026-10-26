@@ -75,6 +75,12 @@ export const initialProfile = {
     name: "Srihith Joshi",
     headline: "Creator & brand storyteller",
     bio: "I turn ideas into stories people want to spend time with. I’m strongest at finding the angle, making the thing, and learning from how people respond.",
+    location: "Bengaluru, India",
+    linkedin: "https://linkedin.com/in/srihith-joshi",
+    instagram: "https://instagram.com/srihithjoshi",
+    website: "https://srihithjoshi.work",
+    openToWork: false,
+    openToWorkRoles: "Content Strategist, Brand Creator",
 };
 
 export const initialExperiences = [
