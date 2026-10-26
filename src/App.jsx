@@ -7,10 +7,11 @@ import AddProjectModal from "./components/AddProjectModal/AddProjectModal";
 import AddExperienceModal from "./components/AddExperienceModal/AddExperienceModal";
 import AddSkillsModal from "./components/AddSkillsModal/AddSkillsModal";
 import AddAchievementModal from "./components/AddAchievementModal/AddAchievementModal";
+import AddEducationModal from "./components/AddEducationModal/AddEducationModal";
 import ProfileEditor from "./components/ProfileEditor/ProfileEditor";
 import Footer from "./components/Footer/Footer";
 import Icon from "./components/Icon/Icon";
-import { initialAchievements, initialExperiences, initialProfile, initialProjects, initialSkillGroups } from "./data/profile";
+import { initialAchievements, initialEducation, initialExperiences, initialProfile, initialProjects, initialSkillGroups } from "./data/profile";
 
 export default function App() {
     const [studentMode, setStudentMode] = useState(false);
@@ -19,6 +20,7 @@ export default function App() {
     const [projects, setProjects] = useState(initialProjects);
     const [experiences, setExperiences] = useState(initialExperiences);
     const [achievements, setAchievements] = useState(initialAchievements);
+    const [education, setEducation] = useState(initialEducation);
     const [skillGroups, setSkillGroups] = useState(() =>
         initialSkillGroups.map((group) => ({
             ...group,
@@ -31,6 +33,7 @@ export default function App() {
     const [addExperienceOpen, setAddExperienceOpen] = useState(false);
     const [addSkillsOpen, setAddSkillsOpen] = useState(false);
     const [addAchievementOpen, setAddAchievementOpen] = useState(false);
+    const [addEducationOpen, setAddEducationOpen] = useState(false);
     const [editOpen, setEditOpen] = useState(false);
     const [copied, setCopied] = useState(false);
 
@@ -135,6 +138,15 @@ export default function App() {
         });
         setAddAchievementOpen(false);
     };
+    const saveEducation = (entry, publish) => {
+        setEducation((items) => {
+            const exists = items.some((item) => item.id === entry.id);
+            return exists
+                ? items.map((item) => item.id === entry.id ? { ...item, ...entry, published: publish } : item)
+                : [{ ...entry, published: publish }, ...items];
+        });
+        setAddEducationOpen(false);
+    };
     const shareProfile = async () => {
         try {
             await navigator.clipboard.writeText(window.location.href);
@@ -172,6 +184,8 @@ export default function App() {
                         onEdit={() => setEditOpen(true)}
                         achievements={achievements}
                         onAddAchievement={() => setAddAchievementOpen(true)}
+                        education={education}
+                        onAddEducation={() => setAddEducationOpen(true)}
                     />
                     <WorkSection
                         projects={projects}
@@ -220,6 +234,14 @@ export default function App() {
                     onClose={() => setAddAchievementOpen(false)}
                     onSave={saveAchievement}
                     onDelete={(id) => setAchievements((items) => items.filter((item) => item.id !== id))}
+                />
+            )}
+            {addEducationOpen && (
+                <AddEducationModal
+                    education={education}
+                    onClose={() => setAddEducationOpen(false)}
+                    onSave={saveEducation}
+                    onDelete={(id) => setEducation((items) => items.filter((item) => item.id !== id))}
                 />
             )}
             {editOpen && (

@@ -6,6 +6,7 @@ import Person1 from "../../assets/images/Person1.png";
 import College1 from "../../assets/images/College1.png";
 import College2 from "../../assets/images/College2.png";
 import EmailIcon from "../../assets/icons/EmailIcon";
+import LitLogo from "../../assets/images/LIT-LOGO.png";
 
 export default function ProfileRail({
     profile,
@@ -13,10 +14,15 @@ export default function ProfileRail({
     onEdit,
     achievements = [],
     onAddAchievement,
+    education = [],
+    onAddEducation,
 }) {
     const visibleAchievements = studentMode
         ? achievements
         : achievements.filter((achievement) => achievement.published);
+    const visibleEducation = studentMode
+        ? education
+        : education.filter((item) => item.published);
     return (
         <aside className="space-y-5 lg:sticky lg:top-5">
             <section
@@ -202,48 +208,34 @@ export default function ProfileRail({
                     )}
                 </div>
                 <div className="mt-5 border-t border-[#e9e7ed] pt-4">
-                    <h2 className="mb-3 text-[12px] font-bold uppercase tracking-[.17em] text-[#3776ff]">
-                        Education
-                    </h2>
-                    <div className="flex gap-2.5 border-b border-dashed border-gray-300 pb-4 mb-4">
-                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border-b border-[#e8e5ec] bg-white text-[10px] font-bold text-[#5c41a0] overflow-hidden">
-                            <img
-                                src={College1}
-                                alt="Jithu"
-                                className="w-full h-full"
-                            ></img>
-                        </span>
-                        <div>
-                            <p className="text-[14px] font-semibold text-[#4e4b55]">
-                                JNTUH College of Engineering
-                            </p>
-                            <p className="mt-0.5 text-[12px] text-[#86828d]">
-                                Graduation · Mechanical Engineering
-                            </p>
-                            <p className="text-[12px] text-[#98949e]">
-                                Jun 2020 — Jun 2024
-                            </p>
-                        </div>
+                    <div className="mb-3 flex items-center justify-between gap-2">
+                        <h2 className="text-[12px] font-bold uppercase tracking-[.17em] text-[#3776ff]">Education</h2>
+                        {studentMode && (
+                            <button onClick={onAddEducation} className="rounded-full border border-[#dfe7ff] px-2.5 py-1 !text-[14px] font-semibold text-[#3776ff] hover:bg-[#f5f8ff]">+ Add</button>
+                        )}
                     </div>
-                    <div className="flex gap-2.5 pb-4">
-                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[#e8e5ec] bg-white text-[10px] font-bold text-[#5c41a0] overflow-hidden">
-                            <img
-                                src={College2}
-                                alt="Vidya"
-                                className="w-full h-full"
-                            ></img>
-                        </span>
-                        <div>
-                            <p className="text-[14px] font-semibold text-[#4e4b55]">
-                                Vidya Niketan
-                            </p>
-                            <p className="mt-0.5 text-[12px] text-[#86828d]">
-                                ISC Commerce
-                            </p>
-                            <p className="text-[12px] text-[#98949e]">
-                                Jun 2018 – Jun 2020
-                            </p>
-                        </div>
+                    <div className="space-y-3">
+                        {visibleEducation.slice(0, studentMode ? 4 : 3).map((item) => (
+                            <div key={item.id} className="flex gap-2.5 border-b border-dashed border-gray-300 pb-3 last:border-0 last:pb-0">
+                                <span className="grid h-8 w-8 shrink-0 place-items-center overflow-hidden rounded-full border border-[#e8e5ec] bg-white p-1">
+                                    {item.logo === "lit" ? (
+                                        <img src={LitLogo} alt="LIT School" className="h-full w-full object-contain" />
+                                    ) : item.logo === "college" ? (
+                                        <img src={College1} alt="JNTUH" className="h-full w-full object-cover" />
+                                    ) : item.logo === "vidya" ? (
+                                        <img src={College2} alt="Vidya Niketan" className="h-full w-full object-contain" />
+                                    ) : (
+                                        <span className="text-[9px] font-bold text-[#5c41a0]">{item.institution.slice(0, 2).toUpperCase()}</span>
+                                    )}
+                                </span>
+                                <div className="min-w-0">
+                                    <p className="text-[12px] font-semibold leading-[1.35] text-[#4e4b55]">{item.institution}</p>
+                                    <p className="mt-0.5 text-[10px] leading-[1.4] text-[#86828d]">{item.degree}{item.program && item.program !== item.degree ? ` · ${item.program}` : ""}</p>
+                                    <p className="text-[10px] text-[#98949e]">{item.date}</p>
+                                </div>
+                            </div>
+                        ))}
+                        {visibleEducation.length === 0 && <p className="rounded-lg bg-[#f5f4f6] p-3 text-[11px] text-[#898590]">Your education will appear here.</p>}
                     </div>
                 </div>
             </section>

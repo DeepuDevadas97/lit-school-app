@@ -136,6 +136,11 @@ export const initialAchievements = [
     { id: "achievement-3", title: "State Level Recognition Telugu Mahasabha Speech Competition", issuer: "Telugu Mahasabha", date: "2022-08-01", certificate: "", published: true },
 ];
 
+export const initialEducation = [
+    { id: "education-jntuh", degree: "Graduation", institution: "JNTUH college of engineering", program: "Mechanical Engineering", date: "Jun 2020 – Jun 2024", logo: "college", certificate: "", published: true },
+    { id: "education-vidya", degree: "ISC Commerce", institution: "Vidya Niketan", program: "", date: "Jun 2018 – Jun 2020", logo: "vidya", certificate: "", published: true },
+];
+
 export const projectFilters = [
     "All work",
     "Creator growth",
