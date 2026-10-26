@@ -7,7 +7,10 @@ import College1 from "../../assets/images/College1.png";
 import College2 from "../../assets/images/College2.png";
 import EmailIcon from "../../assets/icons/EmailIcon";
 
-export default function ProfileRail({ profile, studentMode, onEdit }) {
+export default function ProfileRail({ profile, studentMode, onEdit, achievements = [], onAddAchievement }) {
+    const visibleAchievements = studentMode
+        ? achievements
+        : achievements.filter((achievement) => achievement.published);
     return (
         <aside className="space-y-5 lg:sticky lg:top-5">
             <section
@@ -138,25 +141,29 @@ export default function ProfileRail({ profile, studentMode, onEdit }) {
                     </div>
                 </div>
                 <div className="mt-5 border-t border-[#e9e7ed] pt-4">
-                    <h2 className="mb-3 text-[12px] font-bold uppercase tracking-[.17em] text-[#ec5bcf]">
-                        Achievements
-                    </h2>
-                    <div className="flex items-start gap-2.5">
-                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#fff3d2] text-lg text-[#ed9e23]">
-                            ✹
-                        </span>
-                        <div>
-                            <p className="text-[14px] font-medium leading-[1.4] text-[#55515c]">
-                                State Level Recognition
-                            </p>
-                            <p className="mt-0.5 text-[12px] text-[#898590]">
-                                Telugu Mahasabha Speech Competition
-                            </p>
-                        </div>
+                    <div className="mb-3 flex items-center justify-between gap-2">
+                        <h2 className="text-[12px] font-bold uppercase tracking-[.17em] text-[#ec5bcf]">Achievements</h2>
+                        {studentMode && (
+                            <button onClick={onAddAchievement} className="rounded-full border border-[#eadff0] px-2.5 py-1 !text-[14px] font-semibold text-[#8a48b4] hover:bg-[#fff8ff]">
+                                + Add
+                            </button>
+                        )}
                     </div>
-                    <button className="mt-3 !text-[13px] font-medium text-[#5c5962] underline">
-                        View all achievements
-                    </button>
+                    <div className="space-y-3">
+                        {visibleAchievements.slice(0, studentMode ? 3 : 2).map((achievement) => (
+                            <div key={achievement.id} className="flex items-start gap-2.5 border-b border-dashed border-[#e5e2e8] pb-3 last:border-0 last:pb-0">
+                                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#fff3d2] text-lg text-[#ed9e23]">✹</span>
+                                <div className="min-w-0">
+                                    <p className="text-[12px] font-medium leading-[1.35] text-[#55515c]">{achievement.title}</p>
+                                    <p className="mt-0.5 text-[10px] leading-[1.4] text-[#898590]">{achievement.issuer}</p>
+                                </div>
+                            </div>
+                        ))}
+                        {visibleAchievements.length === 0 && <p className="rounded-lg bg-[#f5f4f6] p-3 text-[11px] text-[#898590]">Your achievements will appear here.</p>}
+                    </div>
+                    {visibleAchievements.length > (studentMode ? 3 : 2) && (
+                        <button className="mt-3 !text-[12px] font-medium text-[#5c5962] underline">View all achievements</button>
+                    )}
                 </div>
                 <div className="mt-5 border-t border-[#e9e7ed] pt-4">
                     <h2 className="mb-3 text-[12px] font-bold uppercase tracking-[.17em] text-[#3776ff]">

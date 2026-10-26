@@ -124,6 +124,12 @@ export const initialSkillGroups = [
     { category: "Web Development", skills: ["Figma (UI/UX Design)", "Form & Funnel Building", "Landing Page Design", "Project Management", "Responsive Design", "Webflow Development", "Website Analytics", "Website Funnels"] },
 ];
 
+export const initialAchievements = [
+    { id: "achievement-1", title: "State level merit throwball player", issuer: "Telangana Throwball Association", date: "2024-05-01", certificate: "", published: true },
+    { id: "achievement-2", title: "Organized a national level technical fest as co-coordinator", issuer: "JNTUH College of Engineering", date: "2023-11-01", certificate: "", published: true },
+    { id: "achievement-3", title: "State Level Recognition Telugu Mahasabha Speech Competition", issuer: "Telugu Mahasabha", date: "2022-08-01", certificate: "", published: true },
+];
+
 export const projectFilters = [
     "All work",
     "Creator growth",
