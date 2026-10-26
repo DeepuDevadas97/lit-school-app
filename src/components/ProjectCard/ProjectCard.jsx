@@ -7,6 +7,12 @@ const accents = {
     orange: "from-[#ec783b] to-[#f3b55b]",
     pink: "from-[#a33177] to-[#342060]",
 };
+
+const truncateOutcome = (outcome) => {
+    const value = String(outcome || "");
+    return value.length > 10 ? `${value.slice(0, 9)}…` : value;
+};
+
 export default function ProjectCard({
     project,
     index,
@@ -72,7 +78,9 @@ export default function ProjectCard({
                                 Outcome
                             </p>
                             <p className="mt-0.5 text-sm font-semibold text-[#25232b]">
-                                {project.outcome}{" "}
+                                <span title={project.outcome}>
+                                    {truncateOutcome(project.outcome)}
+                                </span>{" "}
                                 <span className="font-normal text-[#777580]">
                                     {project.outcomeLabel}
                                 </span>

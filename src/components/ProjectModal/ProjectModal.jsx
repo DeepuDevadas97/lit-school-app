@@ -33,7 +33,7 @@ export default function ProjectModal({ project, onClose }) {
                     </div>
                 </div>
                 <div className="grid gap-8 p-6 sm:grid-cols-[1fr_220px] sm:p-8">
-                    <div>
+                    <div className="min-w-0">
                         <p className="text-[10px] font-bold uppercase tracking-[.17em] text-[#8d68d8]">
                             The brief
                         </p>
@@ -65,12 +65,12 @@ export default function ProjectModal({ project, onClose }) {
                             ))}
                         </div>
                     </div>
-                    <div>
-                        <div className="rounded-2xl bg-[#f6f3fb] p-4">
+                    <div className="min-w-0">
+                        <div className="min-w-0 rounded-2xl bg-[#f6f3fb] p-4">
                             <p className="text-[10px] font-semibold uppercase tracking-[.14em] text-[#8b8498]">
                                 Result
                             </p>
-                            <p className="mt-2 text-2xl font-semibold tracking-tight text-[#292431]">
+                            <p className="mt-2 min-w-0 break-words text-[16px] font-semibold tracking-tight text-[#292431] line-clamp-9">
                                 {project.outcome}
                             </p>
                             <p className="text-xs text-[#77717f]">
