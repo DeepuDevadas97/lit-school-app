@@ -40,11 +40,11 @@ export default function WorkSection({
                     <p className="mb-1 text-[12px] font-bold uppercase tracking-[.19em] text-[#8b65dc]">
                         Proof, not promises
                     </p>
-                    <h2 className="text-[24px] sm:text-[28px] font-semibold tracking-[-.045em] text-[#201f26]">
-                        Work that shows how I think
+                    <h2 className="text-[24px] sm:text-[28px] font-semibold tracking-[-.045em] text-[#201f26] leading-8">
+                       What I've built and what I've learned
                     </h2>
-                    <p className="mt-1 text-sm text-[#84828c]">
-                        A few projects that make my strengths easier to see.
+                    <p className="mt-1.5 text-sm text-[#84828c]">
+                        A look at my work, experience, and technical expertise.
                     </p>
                 </div>
             </div>
