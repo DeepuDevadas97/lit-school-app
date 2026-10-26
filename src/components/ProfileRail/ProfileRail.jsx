@@ -2,7 +2,7 @@ import GpsIcon from "../../assets/icons/GpsIcon";
 import UserStar from "../../assets/icons/UserStar";
 import Icon from "../Icon/Icon";
 import "./ProfileRail.css";
-import Person1 from "../../assets/images/Person1.png";
+import Person1 from "../../assets/images/person1.png";
 import College1 from "../../assets/images/College1.png";
 import College2 from "../../assets/images/College2.png";
 import EmailIcon from "../../assets/icons/EmailIcon";
